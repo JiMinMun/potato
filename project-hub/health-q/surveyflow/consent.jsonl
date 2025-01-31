@@ -1,0 +1,4 @@
+{"id":"1","text":"Procedures:","schema": "pure_display", "choices": ["In this study, you will be presented with 12 short patient inquiries followed by clinical conversations. Please carefully read the provided context and evaluate the questions and answers regarding the context."]}
+{"id":"2","text":"Voluntary Participation:","schema": "pure_display", "choices": ["Your participation in this research is voluntary. You may discontinue participation at any time during the research activity.<br>"]}
+{"id":"1","text":"I have read and understood the instructions.","schema": "radio", "choices": ["Yes", "No"], "label_requirement": {"right_label":["Yes"]}}
+{"id":"2","text":"I want to participate in this research and continue with the study.","schema": "radio", "choices": ["Yes", "No"], "label_requirement": {"right_label":["Yes"]}}

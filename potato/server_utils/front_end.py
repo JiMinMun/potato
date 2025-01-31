@@ -236,9 +236,9 @@ def generate_site(config):
         schema_layouts = ""
         for annotation_scheme in annotation_schemes:
             schema_layout, keybindings = generate_schematic(annotation_scheme)
+            schema_layout = schema_layout.replace('<form', '<form style="margin-bottom: 20px;"')
             schema_layouts += schema_layout + "\n"
             all_keybindings.extend(keybindings)
-
         task_html_layout = task_html_layout.replace("{{annotation_schematic}}", schema_layouts)
 
     # Add in a codebook link if the admin specified one

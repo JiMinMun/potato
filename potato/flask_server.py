@@ -680,6 +680,7 @@ def load_all_data(config):
     for page in config.get("pre_annotation_pages", []):
         # TODO Currently we simply remove the language type before -,
         # but we need a more elegant way for this in the future
+        print(page)
         item = {"id": page['id'], "text": page['text'] if 'text' in page else page['id'].split("-")[-1][:-5]}
         instance_id_to_data.update({page['id']: item})
         instance_id_to_data.move_to_end(page['id'], last=False)

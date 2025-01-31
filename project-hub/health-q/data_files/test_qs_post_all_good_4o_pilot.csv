@@ -1,0 +1,193 @@
+goodness,id,patient_info,clinical_convo,question,optionA,optionB,optionC,optionD,correct_answer
+TRUE,t_cgqe7u2-0,"Numbness
+
+Hi,
+I am a 16 year old girl and I know it is common for people's limbs to 'fall asleep' or 'go numb' after awhile. However, recently it has been happening to me a lot and a lot faster than normal. Also, my feet, arm, whatever will fall asleep in positions that they usually are fine in and faster than normal. 
+I recently got my wisdom teeth out and I am anemic.
+Is this because of my anemia, a reaction to the anesthesia (it was my first time going under),should I make an appointment with my actual doctor, or is it nothing to be worried about?
+Thanks!","Doctor Question: Are you on iron supplements, and if so have you been for long?
+Patient Response: I've known I'm anemic for about a year and I'm on over the counter Iron supplements on an as-needed basis.
+
+Doctor Question: If you were only recently diagnosed/treated for anemia then give it some time, but if it's been a while you might wanna get it retested to see if you're responding to the supplements.
+Patient Response: I've known I'm anemic for about a year and I'm on over the counter Iron supplements on an as-needed basis.","Which factor most likely explains the patient's recurrent limb numbness, given her recent experience and history of anemia?",Lingering effects from the anesthesia used for wisdom teeth removal,A normal phenomenon that does not warrant further evaluation,Dehydration related to post-operative recovery,Inadequate iron intake or fluctuating iron levels associated with anemia,D
+TRUE,t_dolvei1-0,"Right eye twitching for at least two weeks now
+
+My right eye has been occasionally twitching for at least two weeks. I'm getting a normal amount of sleep for me, have stopped drinking energy drinks, and am drinking a good amount of water. Any takes?","Doctor Question: Stress and anxiety?
+Patient Response: I guess that would have to be it. I've had a couple other people tell me they've had it because they were putting off something important. That pretty much describes me right now.
+
+Doctor Question: Also, do you know how long it will take to go away or do you have any suggestions to relieve it?
+Patient Response: None","Based on the patient’s description, which factor is most likely contributing to their persistent right eye twitching?",Ocular dryness from insufficient fluid intake,A chronic neurological disorder,Excess caffeine consumption,Inadequate Nutrient intake,D
+TRUE,t_cus9byz-0,"Chest pain at 16 years old
+
+At first I thought these chest pains I was experiencing was from sleeping on my stomach, but now I've been trying to sleep on my back and side, and this pain continues. It normally gets worse at night and mostly feels just uncomfortable during the day. It kind of feels like a sharp pain, but other times it feels like a squeezing feeling near my heart and on the right side of my chest. Sometimes laying down can help, but other times it seems to worsen the pain. I'm planning on going to a doctor really soon, but I just wanted to know what you guys thought.","Doctor Question: When did this start happening?
+Patient Response: The pain started a couple days ago.
+
+Doctor Question: Does the pain come and go or is it persistent?
+Patient Response: The pain comes and goes, but my chest can feel just uncomfortable for long periods of time.
+
+Doctor Question: What is your weight?
+Patient Response: I'm about 150lbs.
+
+Doctor Question: What type of medical history do you have? Asthma diabetes broke an ankle once, anything at all.
+Patient Response: I don't have diabetes, I've never broken a bone.
+
+Doctor Question: Do you take any medicines/medications?
+Patient Response: I was taking ibuprofen for tendinitis in my hands, but I stopped a couple days ago.
+
+Doctor Question: Does your pain only exist on your chest?
+Patient Response: The pain is only in my chest.
+
+Doctor Question: Does anything make it better or worse??
+Patient Response: Last night, the pain seemed to almost vanish while laying down, but tonight it seems to just continue as I lie down. But as I'm typing this, sitting on my bed, my chest just feels uncomfortable, and not necessarily painful.
+
+Doctor Question: Does the pain get worse if you touch where it hurts like pressing into it?
+Patient Response: The pain does not change when I press on it.
+
+Doctor Question: Does the pain change if breathing in or out? Like it hurts more when you breathe in? Or is it just persistent.
+Patient Response: Breathing in and out doesn't really affect the pain.","Based on the patient’s description of intermittent chest discomfort that is sometimes worse at night, unaffected by breathing, and occasionally relieved by position changes, which of the following is the most likely explanation for their chest pain?",Pleuritic chest pain,Musculoskeletal strain,Gastroesophageal Reflux Disease,Myocardiac Infarction,D
+TRUE,t_doc0n38-0,"Hands shake and ""shiver"" when they're still. It's starting to become extremely annoying...
+
+I'm only 20yo and pretty healthy. I eat lots of protein and drink lots of water. But for some reason my hands are extremely shaky when I specifically try to hold them still or to do tasks that require very slight hand movements. It's starting to become incredibly frustrating that I can't just be still or hold something without it shaking a bit. 
+
+I do crack my knuckles and have since 13 or 14 but I've read that the whole ""knuckle cracking"" thing is a complete myth and that it's never been proven to cause actual damage.","Doctor Question: Do you have any anxiety or elevated heart rate when your hands shake?
+Patient Response: I guess you could say I 'have anxiety'. I was sorta kinda diagnosed with it a handful of years ago and took some pills for a while after that, but haven't in over a year. So it's kinda untreated but you know, it's not really something I ever felt on a physical level, more so on a mental or emotional level.
+
+Doctor Question: Or do they just shake all the time no matter what?
+Patient Response: They do always shake but the degree to which they shake fluctuates. Sometimes it's a lot more noticeable and intrusive than other times. For example when I posted this about 2 hours ago, I was doing something that required precise hand movements and I got extremely frustrated and so I made this post. But now I'm laying in bed and it seems to have calmed down, although it's still a tiny bit apparent when I just hold my hand out in the air.",Which of the following is the most likely reason for this 20-year-old patient's shaky hands that fluctuate based on stress level and precise hand movements?,Joint damage from years of knuckle cracking,Ulnar nerve palsy,Parkinson's Disease,Alcohol withdrawal,C
+FALSE,t_dpn8yo6-0,"How long does it take for zithromax/azithromycin to start to shrink the throat after a strep throat infection?
+
+I took 2 tablets (500 mg) yesterday and 1 tablet (250 mg) today but it almost seems like it's gotten worse.","Doctor Question: Can you swallow solid food?
+Patient Response: With a great deal of pain I can.",How long does it typically take for azithromycin to start relieving throat swelling in a strep throat infection?,Within the first 12 hours,In about one week,Around 2 to 3 days,Less than 6 hours,C
+TRUE,t_dqibdlq-0,"Was I misdiagnosed with a Tic?
+
+When I was 17, I started exhibiting an eye twitch. Was referred to neurologist and diagnosed with a “Tic.” I was prescribed Atarax 10mg. The medication worked and I stopped taking it once I ran out of the first bottle. 
+
+I couldn’t feel the actual “ticking,” it didn’t feel like an “itch” or an impulse commonly attributed with Tics. I had no idea when it would happen and people would just be like “woah your eye just spazzed out.” At the time, I was under a lot of stress and in a school play so I was busy a lot and not sleeping enough and had social anxiety. 
+
+Since then, no one has pointed out the twitch and my parents claim they haven’t seen me do it in years. It was pretty sporadic and disappeared just the same.
+
+My parents described the twitch as a repetitive blinking but it would only happen in one eye. I’ve never seen nor felt myself do it. They said it would come out towards the end of the day or if I was talking about something that made me angry or excited. 
+
+I’m just curious as to what it was, I’ve read a lot on Tourette’s Syndrome and have watched many documentaries on tics and I feel like my symptoms were not the same thing. 
+
+Should also mention that the neurologist ordered an MRI at the time and the results were normal. 
+
+Edit: The tic lasted maybe 2 or 3 months. I’m female, 5”8 half Filipino / half Caucasian. 
+
+Thanks !","Doctor Question: What do you think your diagnosis should have been?
+Patient Response: I don’t know, I just figured it has to be neurological, maybe related to something messed up in my Autonomic Nervous System? It was so random. I never felt my eye twitch, I’ve heard of people twitching prior to a seizure, that’s what I thought would be going on. Maybe something with my potassium / sodium ion pumps?",Which explanation best accounts for the patient’s eye twitch that resolved spontaneously?,An early manifestation of partial seizures,A metabolic imbalance related to sodium/potassium pumps,A stress-induced tic that resolved once stress levels decreased,An early sign of Tourette’s syndrome,C
+TRUE,t_dbuj8ae-0,"30yo m, mild chest pain, several possible causes
+
+For a few days my chest has felt sore on the right side when I breathe in too deep. It's not too bad, but I'm not a doctor so I don't really know if I should be concerned.
+
+There are two main things that could be causing it:
+
+1. Most obvious, I just came down with a cold. I haven't been coughing much yet, but my throat has been sore and I'm a little more sneezy than usual.
+
+
+2. I just got home from a week in the mountains. While I was there, I had a little trouble breathing due to the high altitude and lack of oxygen and probably had ""mountain sickness"" or whatever it's called. I feel fine now that I'm back home, except for the chest pain and cold that started almost as soon as I landed.
+
+Could it be related to either or both of those? When should I be concerned enough to see a doctor?
+
+Thanks!","Doctor Question: How long was the flight?
+Patient Response: The flight home was about 2 hours or so.
+
+Doctor Question: Do you have any calf pain or swelling?
+Patient Response: I don't have any pain or swelling in my legs.
+
+Doctor Question: Any Shortness of breath?
+Patient Response: None
+
+Doctor Question: Do you know how to check your pulse, if so check it and see if it's elevated.
+Patient Response: I checked my heart rate and it seems normal as far as I can tell, 84 bpm. It did seem elevated when I was in the mountains though.","Based on the patient’s mild right-sided chest pain that worsens with deep breathing, recent travel from a high-altitude environment, normal heart rate, and absence of leg swelling or severe cough, what is the best next step?",Go to the emergency room immediately for a CT scan to rule out pulmonary embolism.,Take a course of antibiotics to treat a likely bacterial pneumonia.,"Ignore the pain, as it will likely resolve without any intervention or follow-up.","Use a short course of NSAIDs (e.g., ibuprofen) to manage pain and see a doctor if it does not improve within a week.",D
+FALSE,t_cl6awvi-0,"I feel drunk all the time.
+
+I feel like I am drunk for 2 days . 
+
+- I feel dizzy 
+- I can't focus at all , I can't even have a normal dialogue because when I am trying to answer a question I feel like I know the answer but instead I repeat the question , I can't understand most of the things people say , I have to ask them to repeat themselves .
+- I forget things fast , my short-time memory is almost inexistent . 
+- I take alot of risks and it's like I don't think of consequences that are about to follow. For example , I randomly saw a girl on facebook and I started to   comment her photos in a rude way , like I did it for fun and it made me feel great like nothing else matters .
+- I ignore the pain , it's like it doesn't hurt at all .
+
+I feel like this after a wild night I had in campus , it's like the alchool is still in my blood. 
+I know this sounds very strange , but I really need help . It started to affect my social life and I have no idea what to do . Should I visit a neurologist? I'm 18 by the way. If you have any more questions , don't mind asking me . Thanks","Doctor Question: You suffering from brain fog?
+Patient Response: I didn't knew about brain fog before. Thank you for sharing it with me , I feel like I have the same symptoms.","Which diagnosis best fits this 18-year-old patient's ongoing sense of feeling 'drunk,' with short-term memory problems, disinhibition, and confusion two days after a wild night out?",Bacterial meningitis,Vestibular disorder,Brain fog,Unresolved alcohol intoxication,C
+FALSE,t_chm8tk0-1,"Abdominal pains
+
+I posted a while back with no response, but I hope to try again.
+
+So about 10 months ago, I started getting abdominal pains. All over. From the front to the back, to the upper and lower. They're mostly upper abdominal pains, but they do travel. They seem to be more ""surface"" but they do upset me more internally.
+
+I started getting them and went to the doctor. The discovered I had an enlarged spleen, and sent me in for blood tests. I tested positive for mono. 
+
+I've gotten lots of blood work done, and they've all come back normal. I no longer have mono.
+I've also gotten two Ultrasounds and a CT Scan. Again, nothing showed up. My CT scan is the most recent, and they found that my spleen is still enlarged... but that's it.
+
+I still get the pains. Some days are better than others. It's never like a 10/10 on the pain scale, but more like a 2/10, 3/10 when they're really bad. They are very worrisome though.
+
+Any thoughts? IBS maybe? Thanks for the input.","Doctor Question: you still interested in this?
+Patient Response: In what? Your answer? Yes. Thanks for the advice.
+
+Doctor Question: are your symptoms still an issue you'd like to discuss. Has anything changed? New symptoms, symptoms worsening.
+Patient Response: Oh. Not really. I've had them now for about 9 months. Some days there better (nearly no pains), other days they're more consistent. 2 days ago it was my mid back and left side, yesterday it was my upper right chest, and today, nearly nothing. :)","Which of the following is the most likely explanation for this patient’s persistent, mild abdominal pains given normal blood tests, resolved mononucleosis, and normal imaging aside from a persistently enlarged spleen?",Chronic pancreatitis,A subacute relapse of infectious mononucleosis,Peptic ulcer disease,Irritable bowel syndrome (IBS),D
+FALSE,t_clpdmra-0,"How many abortions do I need before doctors will talk about sterilization/hysterectomy? Will 3 abortions be enough? 5 abortions? 10 abortions?
+
+I wanted a doctor's perspective. I am pursuing sterilization at age 22. This is as informed as it gets (I've been researching options for at least 10 years--that's how awful pregnancy and childbirth sounds). In fact the best option (from research that included medical journal articles as well as medical sites and doctor sites) would be hysterectomy because of hormonal issues tied to my menstrual period. It means most birth controls have unacceptable side effects and progesterin only ones are worse. Condoms of any sort are unbearably painful, I also have a nickel allergy so I can't use non hormonal iud. I keep taken off of every pill and the shot for side effects. I never felt better as I did on Lupron but I can't even have that because I had it for a year long. 
+
+But sterilization would reduce my bad days (many little-to-no functioning days) from the entire month to 10 days a month (because wouldn't need birth control). I mean cutting the tubes or even taking part of them out. I can't do Essure because of the nickel allergy.
+
+
+But doctors won't even talk about either. And they won't talk about it because then I can't have babies. I'm never having babies anyway and if I do they'll be adopted. I've stated this clearly. I've been to many of them since all that I saw here in this city won't even discuss it with me. If they were concerned about medical risks that would be one thing. But no, its because obviously I'm a woman so I want babies."" and obviously I'm too young and irresponsible to make that call, because all women are until they have a baby (and even after they aren't fit to make that call).
+
+*So I want to know from a doctor's perspective how to get through to them?* Because I have three planned parenthoods 20 minutes from my house, so its easier to get multiple abortions than sterilized. I find this ridiculous. I'm pro choice but I'm doing the pro active thing. 
+
+I also find it ridiculous that we have 16 year olds being teen moms because apparently she's responsible enough to make the life-altering decision to have a baby but at 22 I can't make the choice not to? Really? *I* am the irresponsible one? 
+
+How many abortions do i need to show them I'm serious about not having babies? 3? 5? 10? Because I will have 10 abortions in order to not have a kid (if i accidentally got pregnant).","Doctor Question: Maybe this is too personal, but is there a particular event in your life that sparked this?
+Patient Response: No no particular event. Just that pregnancy is repulsive and terrifying and PMDD makes me non functional 10 days out of every month.","Which approach best reflects the recommended next step for this 22-year-old patient who wants to pursue sterilization or hysterectomy, given her severe tokophobia and hormonal intolerance?",Obtain multiple abortions to emphasize her refusal to have children,Wait until she is older before bringing up sterilization again,Seek out a specialized women’s health provider with expertise in complex contraceptive counseling to discuss permanent options,Accept a progesterone-only birth control method despite prior side effects,C
+TRUE,t_cy43jiy-0,"Blood Clots, Elevated D Dimer, and Anxiety..Please Help
+
+Age-25
+Sex-M
+Height-5'8
+Weight-230
+Race-White
+Duration of complaint-Years
+Location (Geographic and on body)-All Over
+Any existing relevant medical issues (if any)-Anxiety
+Current medications (if any)-Anxiety
+
+Ok, so down a week on the celexa and nothing has seemingly changed..not feeling any better but not really surprising...What is surprsing, blood clots....It has been my main concern for about 4 days now and i can't seem to get over it like most stuff..I went to the er after a dull chest pain in my muscle after a day and it would hurt when i would deep breath...So of course right of bat they do an ekg...wait around doctor comes and said te ekg looked good, now he wants blood work cause of my family history of heart disease..blood work down, and then they come out and tell me i need a chest x-ray...at this point im really losing it...wait some more and they come and get me and say my d-dimer test was high and i need a CT Scan now...so we get all hooked up and back we go..my d dimer came back at around 308..not terrible but he said with my history he wanted it check for peace of mind...so we go back ct scan 5 minutes and the waiting game begins...2 hours later the doctor comes in and says, no clots everything came back fine and your free to go. No reason behind my d dimer being high nothing...so my anxiety subsides for a night til dr google comes out in me of course. Now i'm experiencing what i feel is leg pain, and chest pain, but not when i deep breath...just looking if anyone has gone through anything similar? Would they be able to tell if i had any clots off of the blood work and the ct scan anywhere in my body? Do i have anything to stress about? Any advice is welcome...Thanks and i hope you guys have a good day!
+
+Also fighting what feels like a sinus infection, our little one was just really sick with fever and stuff, i recently gave up alcohol afrer abusing it for quite some time...really looking for some help..","Doctor Question: So why did you stop the Celexa?
+Patient Response: I havent stopped the celexa i just started it.
+
+Doctor Question: Do you have any meds to help you with that?
+Patient Response: no all i have is celexa and take asprin
+
+Doctor Question: Are you sleeping well?
+Patient Response: my sleep is awful, maybe a few hours a night
+
+Doctor Question: Have you told your doc about your current situation?
+Patient Response: I have told my doctor about it and he said not to worry just take some asprin a day and go on about life he said all my blood counts were fine.","Based on the patient’s normal chest CT scan, normal blood counts, and physician’s reassurance, which action best addresses the patient’s concern about possible undiscovered blood clots?",Schedule an immediate vascular ultrasound of both legs to check for deep vein thrombosis.,Request a repeat chest CT scan in one week for further clarification.,Accept the negative results as reliable and focus on managing anxiety unless new symptoms arise.,Discontinue Celexa and seek a second opinion for potential heart problems.,C
+TRUE,t_dadczof-0,"Why do I feel pain in my penis and testicles when sad?
+
+So basiclly (this mostly occurs at night when I'm trying to sleep) when I'm sad or ovethink about something negative, I feel VERY hard pain in my penis and testicles...
+
+It hurts so much that sometimes when in bed I need to roll over. What is casuing this? I know a solution is to stop overthinking but I wanna know why i'm experiencing such pain.
+
+Edit: I'm 17.","Doctor Question: Are you laying in a wrong position?
+Patient Response: Well, it usually occurs at night and if I'm positive, I don't feel anything.
+
+Doctor Question: Does it hurt when you orgasm?
+Patient Response: I don't masturbate either so orgasms are out of the question.
+
+Doctor Question: Does it hurt when you pee?
+Patient Response: No, not when pressuring it nor when peeing.
+
+Doctor Question: Does it hurt any other time, walking around, pressing it?
+Patient Response: It can happen sometimes if I'm sad while walking and no, not when pressuring it nor when peeing.
+
+Doctor Question: Feel any lumps?
+Patient Response: None",A 17-year-old male reports severe pain in his penis and testicles mostly at night when he feels sad or thinks negatively. Which of the following is the most likely explanation for his symptoms?,Hidden urinary tract infection leading to pelvic pain,Undiagnosed interstitial cystitis causing discomfort,Psychological factors contributing to somatic discomfort,Early indication of testicular growth or tumor,C
