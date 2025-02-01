@@ -1,2 +1,1 @@
-{"id":"1","text":"How satisfied do you feel about your experience participating our study?","schema": "radio", "choices": ["Very satisfied", "Satisfied", "Not satisfied"], "label_requirement": {"required":true}}
-{"id":"2","text":"How do you feel about your experience participating our study compared with other studies?","schema": "radio", "choices": ["Much better than others", "Better than others", "Similar", "Worse than others", "Much worse than others"], "label_requirement": {"required":true}}
+{"id":"1","text":"Thanks for your time, please click the following link to complete the study","schema": "pure_display", "choices": ["<a href=\"https://app.prolific.com/submissions/complete?cc=CV3930NC\">Click to finish the study</a>"]}

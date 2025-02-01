@@ -118,7 +118,8 @@ def generate_radio_layout(annotation_scheme, horizontal=False):
         final_validation = "right_label" if label in right_label else validation
 
         # add support for horizontal layout
-        br_label = "<br/>"
+        # br_label = "<br/>"
+        br_label = ""
         if horizontal:
             br_label = ""
         schematic += (

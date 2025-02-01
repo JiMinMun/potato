@@ -1,74 +1,76 @@
 {
-    "port": 9001,
+  "port": 9001,
 
-    "server_name": "potato annotator",
+  "server_name": "potato annotator",
 
-    "annotation_task_name": "Health Question Asking Pilot",
+  "annotation_task_name": "Health Question Asking Pilot",
 
-    # Potato will write the annotation file for all annotations to this
-    # directory, as well as per-annotator output files and state information
-    # necessary to restart annotation.
-    "output_annotation_dir": "annotation_output/full/",
+  # Potato will write the annotation file for all annotations to this
+  # directory, as well as per-annotator output files and state information
+  # necessary to restart annotation.
+  "output_annotation_dir": "annotation_output/full/",
 
-    # The output format for the all-annotator data. Allowed formats are:
-    # * jsonl
-    # * json (same output as jsonl)
-    # * csv
-    # * tsv
-    #
-    "output_annotation_format": "csv",
+  # The output format for the all-annotator data. Allowed formats are:
+  # * jsonl
+  # * json (same output as jsonl)
+  # * csv
+  # * tsv
+  #
+  "output_annotation_format": "jsonl",
 
-    # If annotators are using a codebook, this will be linked at the top to the
-    # instance for easy access
-    "annotation_codebook_url": "",
+  # If annotators are using a codebook, this will be linked at the top to the
+  # instance for easy access
+  "annotation_codebook_url": "",
 
-    "data_files": [
-       "data_files/test_qs_post_all_good_4o_pilot.jsonl"
-    ],
+  "data_files": [
+      "data_files/test_qs_post_all_good_4o_pilot.jsonl"
+  ],
 
-    "item_properties": {
-        "id_key": "id",
-        "text_key": "text",
-        # "kwargs": ["clinical_convo", "question", "optionA", "optionB", "optionC", "optionD", "correct_answer"]
-    },
+  "item_properties": {
+      "id_key": "id",
+      "text_key": "text",
+      # "kwargs": ["clinical_convo", "question", "optionA", "optionB", "optionC", "optionD", "correct_answer"]
+  },
 
-    #list_as_text is used when the input text is actually a list of texts, usually used for best-worst-scaling
-    "list_as_text": {
-      "text_list_prefix_type": 'None',
-      "horizontal": True,
-    },
+  #list_as_text is used when the input text is actually a list of texts, usually used for best-worst-scaling
+  "list_as_text": {
+    "text_list_prefix_type": 'None',
+    "horizontal": True,
+  },
 
-    "user_config": {
+  "user_config": {
 
-      "allow_all_users": True,
+    "allow_all_users": True,
 
-      "users": [  ],
-    },
+    "users": [  ],
+  },
 
-    #defining the ways annotators entering the annotation system
-    # "login": {
-    #    "type": 'url_direct',    #can be 'password' or 'url_direct'
-    #    "url_argument": 'PROLIFIC_PID' # when the login type is set to 'url_direct', 'url_argument' must be setup for a direct url argument login
-    # },
+  #defining the ways annotators entering the annotation system
+  "login": {
+      "type": 'url_direct',    #can be 'password' or 'url_direct'
+      "url_argument": 'PROLIFIC_PID' # when the login type is set to 'url_direct', 'url_argument' must be setup for a direct url argument login
+  },
 
-    #the jumping-to-id function will be disabled if "jumping_to_id_disabled" is True
-    "jumping_to_id_disabled": True,
+  #the jumping-to-id function will be disabled if "jumping_to_id_disabled" is True
+  "jumping_to_id_disabled": True,
 
   #the navigation bar will be hidden to the annotators if "hide_navbar" is True
-    "hide_navbar": True,
+  "hide_navbar": True,
 
   # define the surveyflow of the system, set up the pages before and after the data annotation page
-    "surveyflow": {
-      "on": True,
-      #"order" : ['pre_annotation', 'prestudy_passed', 'prestudy_failed', 'post_annotation'],
-      "order" : ['pre_annotation', 'post_annotation'],
-      "pre_annotation": [{"file": 'surveyflow/consent.jsonl', "text": "Instruction and Consent"}, {"file": 'surveyflow/intro.jsonl', "text": "Basic Info"}],
-      # "prestudy_passed": ['surveyflow/prestudy_pass.jsonl'],
-      # "prestudy_failed": ['surveyflow/prestudy_fail.jsonl'],
-      "post_annotation": ['surveyflow/end.jsonl'],
-      # If set, we will automatically generate testing questions similar to the annotation instances, but explicitly ask the annotator to choose one option
-      "testing": [],
-    },
+  "surveyflow": {
+    "on": True,
+    #"order" : ['pre_annotation', 'prestudy_passed', 'prestudy_failed', 'post_annotation'],
+    "order" : ['pre_annotation', 'post_annotation'],
+    "pre_annotation": [{"file": 'surveyflow/intro.jsonl', "text": "Basic Info"}, {"file": 'surveyflow/consent.jsonl', "text": "Instruction and Consent"}],
+    # "prestudy_passed": ['surveyflow/prestudy_pass.jsonl'],
+    # "prestudy_failed": ['surveyflow/prestudy_fail.jsonl'],
+    "post_annotation": [
+      {"file": 'surveyflow/end.jsonl', "text": "Survey Experience"}, {"file": 'surveyflow/experience.jsonl', "text": "Thank you! See you again soon!"}
+    ],
+    # If set, we will automatically generate testing questions similar to the annotation instances, but explicitly ask the annotator to choose one option
+    "testing": [],
+  },
 
     #prestudy test, annotators who fail this test will be disalloed to continue annotation
     # "prestudy": {
@@ -103,10 +105,9 @@
 
     "annotation_schemes": [
       {
-        "id":"1",
         "annotation_type": "radio",
-        "name": "q_plausible",
-        "description": "Is this question plausibly related to the context?",
+        "name": "Q1",
+        "description": "Q1. Is this question plausibly related to the context?",
         "labels": [
             "Yes", "No"
         ],
@@ -115,30 +116,29 @@
         # with this simple keybinding and will need to use the full item
         # specification to bind all labels to keys.
         "sequential_key_binding": True,
-        "required": True
+        "label_requirement": {"required": True}
       },
       {
-        "id":"2",
         "annotation_type": "radio",
-        "name": "answer_correct",
-        "description": "Is the correct answer the right answer, if not which one is the correct answer?",
+        "name": "Q2",
+        "description": "Q2. Is the correct answer the right answer?",
         "labels": [
-            "Yes", "No"
+            "Yes", "No (please answer Q3)"
         ],
         # If true, numbers [1-len(labels)] will be bound to each
         # label. Check box annotations with more than 10 are not supported
         # with this simple keybinding and will need to use the full item
         # specification to bind all labels to keys.
         "sequential_key_binding": True,
-        "required": True
+        "label_requirement": {"required": True}
+        # "required": True
       },
       {
-        "id":"3",
         "annotation_type": "radio",
-        "name": "alt_answer_correct",
-        "description": "If the correct answer is wrong, which option is correct?",
+        "name": "Q3",
+        "description": "Q3. If the correct answer is wrong, which option is correct?",
         "labels": [
-            "A", "B", "C", "D", "None of the above"
+            "A", "B", "C", "D", "None of the above (please answer Q4)"
         ],
         # If true, numbers [1-len(labels)] will be bound to each
         # label. Check box annotations with more than 10 are not supported
@@ -147,14 +147,11 @@
         "sequential_key_binding": True,
       },
       {
-        "id":"4",
         "annotation_type": "text",
-
         # This name gets used in reporting the annotation results
-        "name": "alt_answer_text",
-
+        "name": "Q4",
         # This text is shown to the user and can be a longer statement
-        "description": "If none of the options are correct, what is the correct answer to the question?",
+        "description": "Q4. If none of the options are correct, what is the correct answer to the question?",
       }
     ],
 

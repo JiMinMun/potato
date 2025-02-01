@@ -694,6 +694,7 @@ def load_all_data(config):
             instance_id_to_data.move_to_end(page['id'], last=False)
 
     for page in config.get("post_annotation_pages", []):
+        print(page)
         item = {"id": page['id'], "text": page['text'] if 'text' in page else page['id'].split("-")[-1][:-5]}
         instance_id_to_data.update({page['id']: item})
         instance_id_to_data.move_to_end(page['id'], last=True)
