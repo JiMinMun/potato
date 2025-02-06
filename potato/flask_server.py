@@ -20,6 +20,7 @@ from tqdm import tqdm
 from sklearn.pipeline import Pipeline
 import simpledorff
 from simpledorff.metrics import nominal_metric, interval_metric
+from datetime import datetime
 
 import flask
 from flask import Flask, render_template, request
@@ -727,6 +728,7 @@ def load_all_data(config):
     # Jiaxin: we are simply saving this as a json file at this moment
     if "automatic_assignment" in config and config["automatic_assignment"]["on"]:
 
+        print("Loading task assignment information")
         # path to save task assignment information
         task_assignment_path = os.path.join(
             config["output_annotation_dir"], config["automatic_assignment"]["output_filename"]
@@ -745,6 +747,8 @@ def load_all_data(config):
                 "prestudy_ids": [],
                 "prestudy_passed_users": [],
                 "prestudy_failed_users": [],
+                "user_assignment_count": {},
+                "user_completion_count": {},
             }
             # Setting test_question_per_annotator if it is defined in automatic_assignment,
             # otherwise it is default to 0 and no test question will be used
@@ -775,6 +779,8 @@ def load_all_data(config):
                     if "labels_per_instance" in config["automatic_assignment"]
                     else DEFAULT_LABELS_PER_INSTANCE
                 )
+
+    print("loaded all data")
 
 
 def convert_labels(annotation, schema_type):
@@ -960,6 +966,17 @@ def go_to_id(username, _id):
     user_state = lookup_user_state(username)
     user_state.go_to_id(int(_id))
 
+def submit_annotations(username):
+    """
+    Submit all annotations for this session and reset cur user
+    """
+    global task_assignment
+
+    if username not in task_assignment['user_completion_count']:
+        task_assignment['user_completion_count'][username] = 0
+    task_assignment['user_completion_count'][username] += 1
+
+    return remove_cur_user_session(username)
 
 def get_total_annotations():
     """
@@ -1414,6 +1431,10 @@ def sample_instances(username):
         task_assignment["unassigned"][key] -= 1
         if task_assignment["unassigned"][key] == 0:
             del task_assignment["unassigned"][key]
+    if username not in task_assignment['user_assignment_count']:
+        task_assignment['user_assignment_count'][username] = 1
+    else:
+        task_assignment['user_assignment_count'][username] += 1
 
     # sample and insert test questions
     if task_assignment["testing"]["test_question_per_annotator"] > 0:
@@ -1588,20 +1609,29 @@ def generate_full_user_dataflow(username):
     if "sampling_strategy" not in config["automatic_assignment"] or config["automatic_assignment"]["sampling_strategy"] not in ['random','ordered']:
         logger.debug("Undefined sampling strategy, default to random assignment")
         config["automatic_assignment"]["sampling_strategy"] = "random"
-
+    
+    if "allow_multiple_submissions" not in config["automatic_assignment"] or config["automatic_assignment"]["allow_multiple_submissions"] not in [True,False]:
+        logger.debug("Undefined allow multiple submissions, default to False")
+        config["automatic_assignment"]["allow_multiple_submissions"] = False
+    
     # Force the sampling strategy to be random at this moment, will change this
     # when more sampling strategies are created
     #config["automatic_assignment"]["sampling_strategy"] = "random"
+    keys = list(task_assignment["unassigned"].keys())
+    if config["automatic_assignment"]["allow_multiple_submissions"]:
+        for assigned_key in task_assignment["assigned"].keys():
+            if not assigned_key.endswith('.html') and username in task_assignment["assigned"][assigned_key]:
+                keys.remove(assigned_key)
 
     if config["automatic_assignment"]["sampling_strategy"] == "random":
+        # check if keys assigned have been assigned to the user
         sampled_keys = random.sample(
-            list(task_assignment["unassigned"].keys()),
+            keys,
             config["automatic_assignment"]["instance_per_annotator"],
         )
     elif config["automatic_assignment"]["sampling_strategy"] == "ordered":
         # sampling instances based on the natural order of the data
-
-        sorted_keys = list(task_assignment["unassigned"].keys())
+        sorted_keys = keys
         sampled_keys = sorted_keys[
                        : min(config["automatic_assignment"]["instance_per_annotator"], len(sorted_keys))
                        ]
@@ -1929,9 +1959,14 @@ def load_user_state(username):
         # if automatic assignment is on, load assigned user data
         if "automatic_assignment" in config and config["automatic_assignment"]["on"]:
             assigned_user_data_path = os.path.join(user_dir, "assigned_user_data.json")
-
-            with open(assigned_user_data_path, "r") as r:
-                assigned_user_data = json.load(r)
+            if os.path.exists(assigned_user_data_path):
+                with open(assigned_user_data_path, "r") as r:
+                    assigned_user_data = json.load(r)
+            else:
+                # reassign user data
+                lookup_user_state(username)
+                with open(assigned_user_data_path, "r") as r:
+                    assigned_user_data = json.load(r)
         # otherwise, set the assigned user data as all the instances
         else:
             assigned_user_data = instance_id_to_data
@@ -2010,6 +2045,40 @@ def load_user_state(username):
         lookup_user_state(username)
         return "new user initialized"
 
+def remove_cur_user_session(username):
+    """
+    Removes the user's state from memory and disk.
+    """
+    global user_to_annotation_state
+    global instance_id_to_data
+
+    # Figure out where this user's data would be stored on disk
+    user_state_dir = config["output_annotation_dir"]
+
+    # NB: Do some kind of sanitizing on the username to improve security
+    user_dir = os.path.join(user_state_dir, username)
+
+    # rename all the files
+    user_files = ['annotation_order.txt', 'annotated_instances.jsonl', 'assigned_user_data.json']
+    cur_date_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    rename_success = []
+    if os.path.exists(user_dir):
+        for f in user_files:
+            fname = f.split('.')[0]
+            ftype = f.split('.')[1]
+            if os.path.exists(os.path.join(user_dir, f)):
+                os.rename(os.path.join(user_dir, f), os.path.join(user_dir, fname + '_{}'.format(cur_date_time) + '.' + ftype))
+                # check rename sucessful
+                rename_success.append(os.path.exists(os.path.join(user_dir, fname + '_{}'.format(cur_date_time) + '.' + ftype)))
+
+    del user_to_annotation_state[username]
+    if len(rename_success) == len(user_files) and all(rename_success):
+        logger.info("User session removed for {} at {}".format(username, cur_date_time))
+        return True
+    else:
+        logger.info("User session removal failed for {}".format(username))
+        return False
+    
 
 def get_cur_instance_for_user(username):
     global user_to_annotation_state
@@ -2177,7 +2246,14 @@ def annotate_page(username=None, action=None):
 
     elif action == "go_to":
         go_to_id(username, request.form.get("go_to"))
-
+    elif action == "submit_annotations":
+        logger.info("User {} submitted annotations".format(username))
+        success = submit_annotations(username)
+        if success:
+            prolific_url = config['prolific_completion_url']
+            return f'<head><meta http-equiv="Refresh" content="0; URL={prolific_url}" /></head>'
+        else:
+            return render_template("error.html", error_message="There was an error with submitting your work. Please contact us on Prolific!")
     else:
         print('unrecognized action request: "%s"' % action)
 
@@ -2763,6 +2839,7 @@ def run_server(args):
 
 
     init_config(args)
+    print(config)
     if config.get("verbose"):
         logger.setLevel(logging.DEBUG)
     if config.get("very_verbose"):

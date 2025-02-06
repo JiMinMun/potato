@@ -487,6 +487,18 @@ def generate_surveyflow_pages(config):
                     '<a class="btn btn-secondary" href="#" role="button" onclick="click_to_prev()">Move backward</a>',
                     '<a class="btn btn-secondary" href="#" role="button" onclick="click_to_prev()" hidden>Move backward</a>',
                 )
+            elif config['annotation_task_name'] == 'Health Question Asking Multiple Choice Question Evaluation' and i == len(surveyflow_pages) - 1:
+                keybindings_desc = generate_keybindings_sidebar(config, all_keybindings[:-1])
+                # if 'prolific_completion_url' in config:
+                #     cur_html_template = cur_html_template.replace(
+                #         '<a class="btn btn-secondary" href="#" role="button" onclick="click_to_next()">Move forward</a>',
+                #         '<a class="btn btn-secondary" href="#" role="button" onclick="click_to_submit(); location.href={};">Submit</a>'.format("'{}'".format(config['prolific_completion_url'])),
+                #     )
+                # else:
+                cur_html_template = cur_html_template.replace(
+                    '<a class="btn btn-secondary" href="#" role="button" onclick="click_to_next()">Move forward</a>',
+                    '<a class="btn btn-secondary" href="#" role="button" onclick="click_to_submit()">Submit</a>',
+                )
             elif i == len(surveyflow_pages) - 1 or re.search("prestudy_fail", page):
                 keybindings_desc = generate_keybindings_sidebar(config, all_keybindings[:-1])
                 cur_html_template = cur_html_template.replace(

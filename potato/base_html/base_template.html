@@ -206,6 +206,16 @@
 
           get_new_instance(e);
       }
+      function click_to_submit() {
+        // Gacky code to simulate the submit button as a keyboard event
+        // and not have two separate paths to handle keyboard and mouse
+        // events
+        console.log("submitting annotations")
+        var e = $.Event('keyup');
+        e.key = "Enter";
+
+        submit_annotations(e);
+      }
 
     </script>
 
@@ -511,6 +521,32 @@
               src: action,
               instance_id: instance_id,
               behavior_time_string: time_string
+          }
+
+          // Sends the post message to the server which will let us update the
+          // currently displayed content
+          post(post_req)
+      }
+
+      function submit_annotations(event) {
+          var x = event.key;
+          var action = ""
+          var ism = ""
+
+          //console.log(x)
+          //console.log(firstname)
+          //console.log(lastname)
+          if (x == "Enter") { // Spacebar
+              action = "submit_annotations";
+          }
+          else {
+              // console.log("Unknown key press", event)
+              return
+          }
+
+          var post_req = {
+              label: ism,
+              src: action,
           }
 
           // Sends the post message to the server which will let us update the
