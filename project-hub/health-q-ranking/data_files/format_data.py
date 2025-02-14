@@ -22,7 +22,7 @@ for i, row in enumerate(data):
     sample['option_assignments'] = {options[i]: k for i, k in enumerate(shuffled_variants)}
     cur_options_str = options_str.format(**{k: row[v] for k, v in sample['option_assignments'].items()})
     # display_text_str = [context_str.format(patient_info=row['patient_info'], clinical_convo=row['clinical_convo']).replace('\n\n', '<br>').replace('\n', '<br>'), q_options_str.format(question=row['question'], options=cur_options_str, correct_answer=row['correct_answer'])]
-    display_text_str = [context_str.format(patient_info=row['context'].replace('Patient: ', '')), q_options_str, cur_options_str]
+    display_text_str = [context_str.format(patient_info=row['context'].replace('Patient: ', '').replace(' Doctor:', '')), q_options_str, cur_options_str]
     sample['text'] = display_text_str
     # sample['id'] = row['id']
     data_arr.append(sample)

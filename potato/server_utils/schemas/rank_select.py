@@ -20,6 +20,9 @@ def generate_rank_select_layout(annotation_scheme):
           ('<form id="%s" class="annotation-form select" action="/action_page.php">' % annotation_scheme["name"] )
         + "  <fieldset>"
         + ("  <legend>%s</legend>" % annotation_scheme["description"])
+        + (
+            '<p class="instruction">%s</p>' % annotation_scheme["instruction"] if "instruction" in annotation_scheme else ""
+        )
     )
 
     cur_program_dir = Path(os.path.abspath(__file__)).parent.parent.parent.absolute()  # get the current program dir (for the case of pypi, it will be the path where potato is installed)

@@ -108,6 +108,7 @@
         "annotation_type": "rank_select",
         "name": "Q1",
         "description": "Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst.",
+        "instruction": "Consider which question you would most likely ask a patient, and which question you would least likely ask a patient.",
         "labels": [
             "A", "B", "C", "D", "E"
         ],
@@ -154,7 +155,7 @@
 
     # This is where the actual HTML files will be generated
     "site_dir": "default",
-    "prolific_completion_url": "https://app.prolific.com/submissions/complete?cc=CS2HVRWV",
+    "prolific_completion_url": "https://app.prolific.com/submissions/complete?cc=C1AHZKUG",
     "prolific": {
       "config_file_path": "configs/prolific_config.yaml",
     }

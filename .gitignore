@@ -49,3 +49,8 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
+# prolific configs
+project-hub/health-q-ranking/configs/prolific_config.yaml
+project-hub/health-q-mcq/configs/prolific_config.yaml
+project-hub/health-q-pilot/configs/prolific_config.yaml
