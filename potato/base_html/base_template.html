@@ -331,6 +331,7 @@
                       var hiddenField = document.createElement("input");
                       hiddenField.setAttribute("type", "hidden");
                       hiddenField.setAttribute("name", input.attr('name'));
+                    //   hiddenField.setAttribute("id", input.attr('id'));
                       hiddenField.setAttribute("value", input[0].value);
                       form.appendChild(hiddenField);
                   }
@@ -391,6 +392,7 @@
             return false;
           }
         }
+
         return true;
       }
 
@@ -413,6 +415,30 @@
             }
           }
 
+          // this is just for rank-select TODO fix
+          var inputs = document.querySelectorAll("select[validation=required]");
+          var duplicate = false;
+
+          if (inputs.length > 0) {
+            var valuesSeen = new Set();
+            // Loop through each <select> element to check for duplicates
+            duplicate = Array.from(inputs).some(input => {
+                if (input.value.length == 0){
+                    return false;
+                }
+                if (valuesSeen.has(input.value)) {
+                    // Duplicate found
+                    alert("You cannot select duplicate values for " + input.name);
+                    return true;
+                }
+                // Add the value to the set
+                valuesSeen.add(input.value);
+                return false;
+            });
+            if (duplicate) {
+                return false;
+            }
+          }
 
           // identify all the fieldsets and check if all the required forms are filled
           var fields = document.getElementsByTagName('fieldset');

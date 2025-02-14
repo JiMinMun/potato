@@ -1020,7 +1020,6 @@ def update_annotation_state(username, form):
         # which label. These inputs are labeled with "span_label" so we can skip
         # them as being actual annotatins (the spans are saved below though).
         if ":::" in key and "span_label" not in key:
-
             cols = key.split(":::")
             annotation_schema = cols[0]
             annotation_label = cols[1]

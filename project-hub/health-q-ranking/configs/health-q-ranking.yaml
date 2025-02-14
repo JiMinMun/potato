@@ -23,7 +23,7 @@
   "annotation_codebook_url": "",
 
   "data_files": [
-      "data_files/test_qs_post_all_good_4o_no_answer.jsonl"
+      "data_files/sample_for_human_eval_formatted.jsonl"
   ],
 
   "item_properties": {
@@ -105,11 +105,11 @@
 
     "annotation_schemes": [
       {
-        "annotation_type": "radio",
+        "annotation_type": "rank_select",
         "name": "Q1",
-        "description": "Q1. Is this question plausibly related to the context? (required)",
+        "description": "Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst.",
         "labels": [
-            "Yes", "No"
+            "A", "B", "C", "D", "E"
         ],
         # If true, numbers [1-len(labels)] will be bound to each
         # label. Check box annotations with more than 10 are not supported
@@ -118,54 +118,12 @@
         "sequential_key_binding": True,
         "label_requirement": {"required": True}
       },
-      # {
-      #   "annotation_type": "radio",
-      #   "name": "Q2",
-      #   "description": "Q2. Is the correct answer the right answer? (required)",
-      #   "labels": [
-      #       "Yes", "No (please answer Q3)"
-      #   ],
-      #   # If true, numbers [1-len(labels)] will be bound to each
-      #   # label. Check box annotations with more than 10 are not supported
-      #   # with this simple keybinding and will need to use the full item
-      #   # specification to bind all labels to keys.
-      #   "sequential_key_binding": True,
-      #   "label_requirement": {"required": True}
-      #   # "required": True
-      # },
       {
-        "annotation_type": "radio",
+        "annotation_type": "text",
+        # This name gets used in reporting the annotation results
         "name": "Q2",
-        "description": "Q2. Which of the option listed above is the correct answer to the question? (required)",
-        "labels": [
-            "A", "B", "C", "D", "None of the above (please answer Q3)"
-        ],
-        # If true, numbers [1-len(labels)] will be bound to each
-        # label. Check box annotations with more than 10 are not supported
-        # with this simple keybinding and will need to use the full item
-        # specification to bind all labels to keys.
-        "sequential_key_binding": True,
-        "label_requirement": {"required": True}
-      },
-      {
-        "annotation_type": "text",
-        # This name gets used in reporting the annotation results
-        "name": "Q3",
         # This text is shown to the user and can be a longer statement
-        "description": "Q3. If none of the options are correct, what is the correct answer to the question? (required if your answer to Q2 is None of the above)",
-        # if you want to use multi-line textbox, turn on the text area and set the desired rows and cols of the textbox
-        "textarea": {
-          "on": True,
-          "rows": 1,
-          "cols": 40
-        },
-      },
-      {
-        "annotation_type": "text",
-        # This name gets used in reporting the annotation results
-        "name": "Q4",
-        # This text is shown to the user and can be a longer statement
-        "description": "Q4. (Optional) If you have any comments or suggestions about the provided context, question, the options, or your chosen answers please leave them here.",
+        "description": "Q2. (Optional) If you have any comments or suggestions about the provided context, the options, or your chosen ranking please leave them here.",
         # if you want to use multi-line textbox, turn on the text area and set the desired rows and cols of the textbox
         "textarea": {
           "on": True,

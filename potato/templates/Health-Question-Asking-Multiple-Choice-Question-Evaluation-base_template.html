@@ -255,7 +255,7 @@
 
     <div id="mySidepanel" class="sidepanel">
       <a href="javascript:void(0)" class="closebtn" target_id="mySidepanel" onclick="closeNav(this.getAttribute('target_id'))">&times;</a>
-      <table style="border:1px solid black;margin-left:auto;margin-right:auto;text-align: center;"><tr><td>&nbsp;&nbsp;&#8592;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;1&nbsp;&nbsp;</td><td>&nbsp;&nbsp;2&nbsp;&nbsp;</td><td>&nbsp;&nbsp;1&nbsp;&nbsp;</td><td>&nbsp;&nbsp;2&nbsp;&nbsp;</td><td>&nbsp;&nbsp;1&nbsp;&nbsp;</td><td>&nbsp;&nbsp;2&nbsp;&nbsp;</td><td>&nbsp;&nbsp;3&nbsp;&nbsp;</td><td>&nbsp;&nbsp;4&nbsp;&nbsp;</td><td>&nbsp;&nbsp;5&nbsp;&nbsp;</td></tr><tr><td>&nbsp;&nbsp;Move backward&nbsp;&nbsp;</td><td>&nbsp;&nbsp;Move forward&nbsp;&nbsp;</td><td>&nbsp;&nbsp; Yes&nbsp;&nbsp;</td><td>&nbsp;&nbsp; No&nbsp;&nbsp;</td><td>&nbsp;&nbsp; Yes&nbsp;&nbsp;</td><td>&nbsp;&nbsp; No (please answer Q3)&nbsp;&nbsp;</td><td>&nbsp;&nbsp; A&nbsp;&nbsp;</td><td>&nbsp;&nbsp; B&nbsp;&nbsp;</td><td>&nbsp;&nbsp; C&nbsp;&nbsp;</td><td>&nbsp;&nbsp; D&nbsp;&nbsp;</td><td>&nbsp;&nbsp; None of the above (please answer Q4)&nbsp;&nbsp;</td></tr></table>
+      <table style="border:1px solid black;margin-left:auto;margin-right:auto;text-align: center;"><tr><td>&nbsp;&nbsp;&#8592;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td></tr><tr><td>&nbsp;&nbsp;Move backward&nbsp;&nbsp;</td><td>&nbsp;&nbsp;Move forward&nbsp;&nbsp;</td></tr></table>
     </div>
 
     <div id="Statpanel" class="sidepanel">
@@ -566,6 +566,7 @@
                       var hiddenField = document.createElement("input");
                       hiddenField.setAttribute("type", "hidden");
                       hiddenField.setAttribute("name", input.attr('name'));
+                    //   hiddenField.setAttribute("id", input.attr('id'));
                       hiddenField.setAttribute("value", input[0].value);
                       form.appendChild(hiddenField);
                   }
@@ -626,6 +627,7 @@
             return false;
           }
         }
+
         return true;
       }
 
@@ -648,6 +650,30 @@
             }
           }
 
+          // this is just for rank-select TODO fix
+          var inputs = document.querySelectorAll("select[validation=required]");
+          var duplicate = false;
+
+          if (inputs.length > 0) {
+            var valuesSeen = new Set();
+            // Loop through each <select> element to check for duplicates
+            duplicate = Array.from(inputs).some(input => {
+                if (input.value.length == 0){
+                    return false;
+                }
+                if (valuesSeen.has(input.value)) {
+                    // Duplicate found
+                    alert("You cannot select duplicate values for " + input.name);
+                    return true;
+                }
+                // Add the value to the set
+                valuesSeen.add(input.value);
+                return false;
+            });
+            if (duplicate) {
+                return false;
+            }
+          }
 
           // identify all the fieldsets and check if all the required forms are filled
           var fields = document.getElementsByTagName('fieldset');
@@ -859,16 +885,11 @@
   </div>
   <div class="col-md-12">
     <div class="annotation_schema" style="flex-direction:column;">
-      <form style="margin-bottom: 20px;" id="Q1" class="annotation-form radio" action="/action_page.php">  <fieldset>  <legend>Q1. Is this question plausibly related to the context?</legend>      <input class="Q1" type="radio" id="Q1:::Yes" name="Q1:::Yes" value="1" onclick="onlyOne(this)" validation="required">  <label for="Q1:::Yes" >Yes</label>      <input class="Q1" type="radio" id="Q1:::No" name="Q1:::No" value="2" onclick="onlyOne(this)" validation="required">  <label for="Q1:::No" >No</label>  </fieldset>
+      <form style="margin-bottom: 20px;" id="Q1" class="annotation-form select" action="/action_page.php">  <fieldset>  <legend>Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst.</legend><label value="1" style="display: inline-block; width:220px">1 (Best follow-up question)</label> <select type="select-one" class="Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst." id="Q1-1" name="Q1-1:::select-one" validation="required"><option disabled selected value> -- select an option -- </option><option class="Q1" id="Q1:::A" name="Q1:::A" value="A">A</option><option class="Q1" id="Q1:::B" name="Q1:::B" value="B">B</option><option class="Q1" id="Q1:::C" name="Q1:::C" value="C">C</option><option class="Q1" id="Q1:::D" name="Q1:::D" value="D">D</option><option class="Q1" id="Q1:::E" name="Q1:::E" value="E">E</option></select><br><label value="2" style="display: inline-block; width:220px">2</label> <select type="select-one" class="Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst." id="Q1-2" name="Q1-2:::select-one" validation="required"><option disabled selected value> -- select an option -- </option><option class="Q1" id="Q1:::A" name="Q1:::A" value="A">A</option><option class="Q1" id="Q1:::B" name="Q1:::B" value="B">B</option><option class="Q1" id="Q1:::C" name="Q1:::C" value="C">C</option><option class="Q1" id="Q1:::D" name="Q1:::D" value="D">D</option><option class="Q1" id="Q1:::E" name="Q1:::E" value="E">E</option></select><br><label value="3" style="display: inline-block; width:220px">3</label> <select type="select-one" class="Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst." id="Q1-3" name="Q1-3:::select-one" validation="required"><option disabled selected value> -- select an option -- </option><option class="Q1" id="Q1:::A" name="Q1:::A" value="A">A</option><option class="Q1" id="Q1:::B" name="Q1:::B" value="B">B</option><option class="Q1" id="Q1:::C" name="Q1:::C" value="C">C</option><option class="Q1" id="Q1:::D" name="Q1:::D" value="D">D</option><option class="Q1" id="Q1:::E" name="Q1:::E" value="E">E</option></select><br><label value="4" style="display: inline-block; width:220px">4</label> <select type="select-one" class="Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst." id="Q1-4" name="Q1-4:::select-one" validation="required"><option disabled selected value> -- select an option -- </option><option class="Q1" id="Q1:::A" name="Q1:::A" value="A">A</option><option class="Q1" id="Q1:::B" name="Q1:::B" value="B">B</option><option class="Q1" id="Q1:::C" name="Q1:::C" value="C">C</option><option class="Q1" id="Q1:::D" name="Q1:::D" value="D">D</option><option class="Q1" id="Q1:::E" name="Q1:::E" value="E">E</option></select><br><label value="5" style="display: inline-block; width:220px">5 (Worst follow-up question)</label> <select type="select-one" class="Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst." id="Q1-5" name="Q1-5:::select-one" validation="required"><option disabled selected value> -- select an option -- </option><option class="Q1" id="Q1:::A" name="Q1:::A" value="A">A</option><option class="Q1" id="Q1:::B" name="Q1:::B" value="B">B</option><option class="Q1" id="Q1:::C" name="Q1:::C" value="C">C</option><option class="Q1" id="Q1:::D" name="Q1:::D" value="D">D</option><option class="Q1" id="Q1:::E" name="Q1:::E" value="E">E</option></select><br>
+</fieldset>
 </form>
 
-<form style="margin-bottom: 20px;" id="Q2" class="annotation-form radio" action="/action_page.php">  <fieldset>  <legend>Q2. Is the correct answer the right answer?</legend>      <input class="Q2" type="radio" id="Q2:::Yes" name="Q2:::Yes" value="1" onclick="onlyOne(this)" validation="required">  <label for="Q2:::Yes" >Yes</label>      <input class="Q2" type="radio" id="Q2:::No (please answer Q3)" name="Q2:::No (please answer Q3)" value="2" onclick="onlyOne(this)" validation="required">  <label for="Q2:::No (please answer Q3)" >No (please answer Q3)</label>  </fieldset>
-</form>
-
-<form style="margin-bottom: 20px;" id="Q3" class="annotation-form radio" action="/action_page.php">  <fieldset>  <legend>Q3. If the correct answer is wrong, which option is correct?</legend>      <input class="Q3" type="radio" id="Q3:::A" name="Q3:::A" value="1" onclick="onlyOne(this)" validation="">  <label for="Q3:::A" >A</label>      <input class="Q3" type="radio" id="Q3:::B" name="Q3:::B" value="2" onclick="onlyOne(this)" validation="">  <label for="Q3:::B" >B</label>      <input class="Q3" type="radio" id="Q3:::C" name="Q3:::C" value="3" onclick="onlyOne(this)" validation="">  <label for="Q3:::C" >C</label>      <input class="Q3" type="radio" id="Q3:::D" name="Q3:::D" value="4" onclick="onlyOne(this)" validation="">  <label for="Q3:::D" >D</label>      <input class="Q3" type="radio" id="Q3:::None of the above (please answer Q4)" name="Q3:::None of the above (please answer Q4)" value="5" onclick="onlyOne(this)" validation="">  <label for="Q3:::None of the above (please answer Q4)" >None of the above (please answer Q4)</label>  </fieldset>
-</form>
-
-<form style="margin-bottom: 20px;" id="Q4" class="annotation-form textbox" action="/action_page.php">  <fieldset>  <legend>Q4. If none of the options are correct, what is the correct answer to the question?</legend> <ul class="likert" style="text-align: center;">  <li><label for="Q4:::text_box" ></label> <input class="Q4" style="" type="text" id="Q4:::text_box" name="Q4:::text_box" validation="" > </li> <br/> </ul> </fieldset>
+<form style="margin-bottom: 20px;" id="Q2" class="annotation-form textbox" action="/action_page.php">  <fieldset>  <legend>Q2. (Optional) If you have any comments or suggestions about the provided context, the options, or your chosen ranking please leave them here.</legend> <ul class="likert" style="text-align: center;">  <li><label for="Q2:::text_box" ></label> <textarea rows="2" cols="40" class="Q2" style="" type="text" id="Q2:::text_box" name="Q2:::text_box" validation="" ></textarea></li> <br/> </ul> </fieldset>
 </form>
 
 

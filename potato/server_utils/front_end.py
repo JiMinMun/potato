@@ -26,6 +26,8 @@ from potato.server_utils.schemas import (
     generate_pure_display_layout,
     generate_select_layout,
     generate_slider_layout,
+    generate_drag_and_drop_layout,
+    generate_rank_select_layout
 )
 
 logger = logging.getLogger(__name__)
@@ -59,6 +61,8 @@ def generate_schematic(annotation_scheme):
         "pure_display": generate_pure_display_layout,
         "select": generate_select_layout,
         "slider": generate_slider_layout,
+        "ranking": generate_drag_and_drop_layout,
+        "rank_select": generate_rank_select_layout,
     }.get(annotation_type)
 
     if not annotation_func:
