@@ -2379,6 +2379,11 @@ def annotate_page(username=None, action=None):
             'davidjurgens/potato@HEAD/node/live/potato.js" ' +
             ' crossorigin="anonymous"></script>'
         )
+    
+    # fill in options if task is healthq ranking
+    if config["annotation_task_name"] == 'Health Question Asking Ranking - Hitchcock' and "option_assignments" in instance:
+        for option in config["annotation_schemes"][0]["options"]:
+            kwargs["option_%s" % option] = instance["option_%s" % option]
 
     # Flask will fill in the things we need into the HTML template we've created,
     # replacing {{variable_name}} with the associated text for keyword arguments
@@ -2440,8 +2445,7 @@ def annotate_page(username=None, action=None):
 
                 # Find all the input, select, and textarea tags with this name
                 # (which was annotated) and figure out which one to fill in
-                input_fields = soup.find_all(["input", "select", "textarea"], {"name": name})
-
+                input_fields = soup.find_all(["input", "select", "textarea", "div"], {"name": name})
                 for input_field in input_fields:
                     if input_field is None:
                         print("No input for ", name)
@@ -2451,6 +2455,11 @@ def annotate_page(username=None, action=None):
                     if input_field['type'] == 'range' and name.startswith('slider:::'):
                         input_field['value'] = value
                         continue
+                    
+                    if input_field['type'] == 'rank-item':
+                        li_id = value
+                        ranked_item = soup.find("li", {"id": li_id})
+                        input_field.append(ranked_item)
 
                     # If it's not a text area, let's see if this is the button
                     # that was checked, and if so mark it as checked
@@ -2469,6 +2478,11 @@ def annotate_page(username=None, action=None):
                     elif label == "select-one":
                         option = input_field.findChildren("option", {"value": value})[0]
                         option["selected"] = "selected"
+            
+            # for ranking only
+            # find all the ranking-item
+            # find all the li tags
+            # repo
 
     # randomize the order of options for multirate schema
     selected_schemas_for_option_randomization = []

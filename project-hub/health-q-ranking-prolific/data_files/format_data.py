@@ -8,12 +8,12 @@ with open('./sample_for_human_eval.json', 'r') as f:
     data = json.load(f)
 
 options = ['A', 'B', 'C', 'D', 'E', 'F']
-sample_variants = ["human_output", "output_base", "output_dpo_policy", "output_ppo_reward", "output_ppo_policy", "output_dpo_coarse"]
+sample_variants = ["human_output", "output_base", "output_dpo_policy", "output_ppo_reward", "output_ppo_policy", "output_dpo_coarse", ""]
 context_str = """<big><strong>Context</strong></big><br><strong>Patient</strong><br>{patient_info}<br>"""
 # q_options_str = """<br><big><strong>Question and Answer to Evaluate</strong></big><br><strong>Question</strong> {question}<br><strong>Options</strong><br>{options}<strong>Answer</strong> {correct_answer}<br>"""
 # q_options_str = """<br><big><strong>Question and Answer to Evaluate</strong></big><br><strong>Question</strong> {question}<br><strong>Options</strong><br>{options}"""
 q_options_str = """<br><big><strong>Options for a follow-up question</strong></big>"""
-options_str = """A. {A}<br>B. {B}<br>C. {C}<br>D. {D}<br>E. {E}<br>"""
+options_str = """A. {A}<br>B. {B}<br>C. {C}<br>D. {D}<br>E. {E}<br> F. {F}<br>"""
 data_arr = []
 
 for i, row in enumerate(data):

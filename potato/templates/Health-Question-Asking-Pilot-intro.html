@@ -441,6 +441,16 @@
 
           get_new_instance(e);
       }
+      function click_to_submit() {
+        // Gacky code to simulate the submit button as a keyboard event
+        // and not have two separate paths to handle keyboard and mouse
+        // events
+        console.log("submitting annotations")
+        var e = $.Event('keyup');
+        e.key = "Enter";
+
+        submit_annotations(e);
+      }
 
     </script>
 
@@ -556,6 +566,7 @@
                       var hiddenField = document.createElement("input");
                       hiddenField.setAttribute("type", "hidden");
                       hiddenField.setAttribute("name", input.attr('name'));
+                    //   hiddenField.setAttribute("id", input.attr('id'));
                       hiddenField.setAttribute("value", input[0].value);
                       form.appendChild(hiddenField);
                   }
@@ -616,6 +627,7 @@
             return false;
           }
         }
+
         return true;
       }
 
@@ -638,6 +650,30 @@
             }
           }
 
+          // this is just for rank-select TODO fix
+          var inputs = document.querySelectorAll("select[validation=required]");
+          var duplicate = false;
+
+          if (inputs.length > 0) {
+            var valuesSeen = new Set();
+            // Loop through each <select> element to check for duplicates
+            duplicate = Array.from(inputs).some(input => {
+                if (input.value.length == 0){
+                    return false;
+                }
+                if (valuesSeen.has(input.value)) {
+                    // Duplicate found
+                    alert("You cannot select duplicate values for " + input.name);
+                    return true;
+                }
+                // Add the value to the set
+                valuesSeen.add(input.value);
+                return false;
+            });
+            if (duplicate) {
+                return false;
+            }
+          }
 
           // identify all the fieldsets and check if all the required forms are filled
           var fields = document.getElementsByTagName('fieldset');
@@ -753,6 +789,32 @@
           post(post_req)
       }
 
+      function submit_annotations(event) {
+          var x = event.key;
+          var action = ""
+          var ism = ""
+
+          //console.log(x)
+          //console.log(firstname)
+          //console.log(lastname)
+          if (x == "Enter") { // Spacebar
+              action = "submit_annotations";
+          }
+          else {
+              // console.log("Unknown key press", event)
+              return
+          }
+
+          var post_req = {
+              label: ism,
+              src: action,
+          }
+
+          // Sends the post message to the server which will let us update the
+          // currently displayed content
+          post(post_req)
+      }
+
     </script>
 
     <script>
@@ -823,7 +885,7 @@
   </div>
   <div class="col-md-12">
     <div class="annotation_schema" style="flex-direction:column;">
-      <Strong>Qualification:</Strong> To qualify for this study, you must have expertise in medical communication. You might disqualify if you do not show expertise. Please answer the qustions below to continue.<br><br><strong>This is a pilot study. If you qualify, you will be invited to participate in subsequent studies!</strong><br>
+      <Strong>Qualification:</Strong> To qualify for this study, you must have expertise in medicine and experience in medical communication. You might disqualify from future studies if you do not show expertise. Please answer the qustions below to continue.<br><br><strong>This is a pilot study. If you qualify, you will be invited to participate in subsequent studies!</strong><br>
 <form id="How many years of experience do you have studying medicine / related fields?" class="annotation-form radio" action="/action_page.php">  <fieldset>  <legend>How many years of experience do you have studying medicine / related fields?</legend>      <input class="How many years of experience do you have studying medicine / related fields?" type="radio" id="How many years of experience do you have studying medicine / related fields?:::Under 1 year" name="How many years of experience do you have studying medicine / related fields?:::Under 1 year" value="How many years of experience do you have studying medicine / related fields?:::Under 1 year" onclick="onlyOne(this)" validation="required">  <label for="How many years of experience do you have studying medicine / related fields?:::Under 1 year" >Under 1 year</label>      <input class="How many years of experience do you have studying medicine / related fields?" type="radio" id="How many years of experience do you have studying medicine / related fields?:::1-4 years" name="How many years of experience do you have studying medicine / related fields?:::1-4 years" value="How many years of experience do you have studying medicine / related fields?:::1-4 years" onclick="onlyOne(this)" validation="required">  <label for="How many years of experience do you have studying medicine / related fields?:::1-4 years" >1-4 years</label>      <input class="How many years of experience do you have studying medicine / related fields?" type="radio" id="How many years of experience do you have studying medicine / related fields?:::4-8 years" name="How many years of experience do you have studying medicine / related fields?:::4-8 years" value="How many years of experience do you have studying medicine / related fields?:::4-8 years" onclick="onlyOne(this)" validation="required">  <label for="How many years of experience do you have studying medicine / related fields?:::4-8 years" >4-8 years</label>      <input class="How many years of experience do you have studying medicine / related fields?" type="radio" id="How many years of experience do you have studying medicine / related fields?:::Over 8 years" name="How many years of experience do you have studying medicine / related fields?:::Over 8 years" value="How many years of experience do you have studying medicine / related fields?:::Over 8 years" onclick="onlyOne(this)" validation="required">  <label for="How many years of experience do you have studying medicine / related fields?:::Over 8 years" >Over 8 years</label>  </fieldset>
 </form>
 <br>

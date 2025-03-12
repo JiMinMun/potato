@@ -885,10 +885,62 @@
   </div>
   <div class="col-md-12">
     <div class="annotation_schema" style="flex-direction:column;">
-      <form style="margin-bottom: 20px;" id="Q1" class="annotation-form select" action="/action_page.php">  <fieldset>  <legend>Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst.</legend><p class="instruction">Consider which question you would most likely ask a patient, and which question you would least likely ask a patient.</p><label value="1" style="display: inline-block; width:220px">1 (Best follow-up question)</label> <select type="select-one" class="Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst." id="Q1-1" name="Q1-1:::select-one" validation="required"><option disabled selected value> -- select an option -- </option><option class="Q1" id="Q1:::A" name="Q1:::A" value="A">A</option><option class="Q1" id="Q1:::B" name="Q1:::B" value="B">B</option><option class="Q1" id="Q1:::C" name="Q1:::C" value="C">C</option><option class="Q1" id="Q1:::D" name="Q1:::D" value="D">D</option><option class="Q1" id="Q1:::E" name="Q1:::E" value="E">E</option></select><br><label value="2" style="display: inline-block; width:220px">2</label> <select type="select-one" class="Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst." id="Q1-2" name="Q1-2:::select-one" validation="required"><option disabled selected value> -- select an option -- </option><option class="Q1" id="Q1:::A" name="Q1:::A" value="A">A</option><option class="Q1" id="Q1:::B" name="Q1:::B" value="B">B</option><option class="Q1" id="Q1:::C" name="Q1:::C" value="C">C</option><option class="Q1" id="Q1:::D" name="Q1:::D" value="D">D</option><option class="Q1" id="Q1:::E" name="Q1:::E" value="E">E</option></select><br><label value="3" style="display: inline-block; width:220px">3</label> <select type="select-one" class="Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst." id="Q1-3" name="Q1-3:::select-one" validation="required"><option disabled selected value> -- select an option -- </option><option class="Q1" id="Q1:::A" name="Q1:::A" value="A">A</option><option class="Q1" id="Q1:::B" name="Q1:::B" value="B">B</option><option class="Q1" id="Q1:::C" name="Q1:::C" value="C">C</option><option class="Q1" id="Q1:::D" name="Q1:::D" value="D">D</option><option class="Q1" id="Q1:::E" name="Q1:::E" value="E">E</option></select><br><label value="4" style="display: inline-block; width:220px">4</label> <select type="select-one" class="Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst." id="Q1-4" name="Q1-4:::select-one" validation="required"><option disabled selected value> -- select an option -- </option><option class="Q1" id="Q1:::A" name="Q1:::A" value="A">A</option><option class="Q1" id="Q1:::B" name="Q1:::B" value="B">B</option><option class="Q1" id="Q1:::C" name="Q1:::C" value="C">C</option><option class="Q1" id="Q1:::D" name="Q1:::D" value="D">D</option><option class="Q1" id="Q1:::E" name="Q1:::E" value="E">E</option></select><br><label value="5" style="display: inline-block; width:220px">5 (Worst follow-up question)</label> <select type="select-one" class="Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst." id="Q1-5" name="Q1-5:::select-one" validation="required"><option disabled selected value> -- select an option -- </option><option class="Q1" id="Q1:::A" name="Q1:::A" value="A">A</option><option class="Q1" id="Q1:::B" name="Q1:::B" value="B">B</option><option class="Q1" id="Q1:::C" name="Q1:::C" value="C">C</option><option class="Q1" id="Q1:::D" name="Q1:::D" value="D">D</option><option class="Q1" id="Q1:::E" name="Q1:::E" value="E">E</option></select><br>
-</fieldset>
-</form>
+      <div><form style="margin-bottom: 20px;" class="annotation-form drag-and-drop" id="Q1" action="/action_page.php"><fieldset> <legend>Q1. (Required) Rank the suggested follow-up questions in the options above from best to worst.</legend><ul id="Q1" class="rank-list"><div class="rank-item" ondrop="drop(event)" ondragover="allowDrop(event)" id="Q1-0">1</div><div class="rank-item" ondrop="drop(event)" ondragover="allowDrop(event)" id="Q1-1">2</div><div class="rank-item" ondrop="drop(event)" ondragover="allowDrop(event)" id="Q1-2">3</div><div class="rank-item" ondrop="drop(event)" ondragover="allowDrop(event)" id="Q1-3">4</div><div class="rank-item" ondrop="drop(event)" ondragover="allowDrop(event)" id="Q1-4">5</div><li class="draggable-item" draggable="true" ondragstart="drag(event)" name="A" id="Q1-A" validation="required" type="drag-drop">A</li><li class="draggable-item" draggable="true" ondragstart="drag(event)" name="B" id="Q1-B" validation="required" type="drag-drop">B</li><li class="draggable-item" draggable="true" ondragstart="drag(event)" name="C" id="Q1-C" validation="required" type="drag-drop">C</li><li class="draggable-item" draggable="true" ondragstart="drag(event)" name="D" id="Q1-D" validation="required" type="drag-drop">D</li><li class="draggable-item" draggable="true" ondragstart="drag(event)" name="E" id="Q1-E" validation="required" type="drag-drop">E</li></ul></fieldset>
+</form></div>
 
+    <style>
+        .rank-list { 
+            list-style-type: none; 
+            padding: 0; 
+        }
+        .draggable-item {
+            margin: 5px 0; 
+            padding: 10px; 
+            border: 2px solid #ccc; 
+            cursor: grab;
+            opacity: 0.5;
+            background-color: lightgrey;
+        }
+        .rank-item {
+            margin: 5px 0; 
+            padding: 10px; 
+            border: 2px dashed #ccc; 
+            cursor: pointer;
+            background-color: #f9f9f9;
+        }
+        .draggable-item.dragover {
+            border: 2px dashed #999;
+        }
+    </style>
+    <script>
+        const draggables = document.querySelectorAll('.draggable-item');
+        const container = document.getElementById('Q1');
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', () => {
+                draggable.classList.add('dragging');
+            });
+
+            draggable.addEventListener('dragend', () => {
+                draggable.classList.remove('dragging');
+            });
+        });
+    </script>
+    
 <form style="margin-bottom: 20px;" id="Q2" class="annotation-form textbox" action="/action_page.php">  <fieldset>  <legend>Q2. (Optional) If you have any comments or suggestions about the provided context, the options, or your chosen ranking please leave them here.</legend> <ul class="likert" style="text-align: center;">  <li><label for="Q2:::text_box" ></label> <textarea rows="2" cols="40" class="Q2" style="" type="text" id="Q2:::text_box" name="Q2:::text_box" validation="" ></textarea></li> <br/> </ul> </fieldset>
 </form>
 

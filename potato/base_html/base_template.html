@@ -341,6 +341,25 @@
               }
           );
 
+          $(".rank-item").each(
+              function(index) {
+                console.log("drag-and-drop")
+                console.log($(this).children())
+                let parent_id = $(this).attr("id")
+                $(this).children().each(
+                    function(index) {
+                        if ($(this).attr("class") == "draggable-item") {
+                            var hiddenField = document.createElement("input");
+                            hiddenField.setAttribute("type", "hidden");
+                            hiddenField.setAttribute("name", parent_id);
+                            hiddenField.setAttribute("value", $(this).attr("id"));
+                            form.appendChild(hiddenField);
+                        }
+                    }
+                );
+              }
+          );
+
           // Get all the highlighted text for this instance and marshall that
           // into some kind of representation for the server side
           $(".span_container").first().each(
@@ -389,6 +408,19 @@
 
           if (!checked) {
             alert("Please complete all the require fields");
+            return false;
+          }
+        }
+
+        var rows = document.querySelectorAll(".rank-item");
+        for (var i = 0; i < rows.length; i++) {
+          var draggables = rows[i].querySelectorAll("li[type='drag-drop'][validation='required']");
+          if (draggables.length == 1) {
+              var checked = true;
+          }
+
+          if (!checked) {
+            alert("Please assign one item per rank.");
             return false;
           }
         }
@@ -541,12 +573,14 @@
 
           var instance_id = document.getElementById('instance_id').value
           var time_string = document.getElementById("timecounter").innerHTML //get time spent on this instance
+          var time_stamp = new Date;
           //time_string = '-1'
           var post_req = {
               label: ism,
               src: action,
               instance_id: instance_id,
-              behavior_time_string: time_string
+              behavior_time_string: time_string,
+              behavior_time_stamp: time_stamp.toUTCString()
           }
 
           // Sends the post message to the server which will let us update the
